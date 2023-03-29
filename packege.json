@@ -1,0 +1,24 @@
+{
+    "name": "portfolio",
+    "private": true,
+    "description": "Портфолио HTML-верстальщика",
+    "devDependencies": {
+
+    },
+    "scripts": {
+        "build": "gulp build",
+        "start": "gulp",
+        "script": "gulp script"
+    },
+    "browserslist": [
+        "last 2 versions",
+        "not dead",
+        "not ie <= 11",
+        "not op_mini all",
+        "not < 0.25%"
+    ],
+    "engines": {
+        "node": "^16"
+    },
+    "type": "module"
+}
