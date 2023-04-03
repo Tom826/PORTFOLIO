@@ -15,15 +15,15 @@ import terser from 'gulp-terser';
 
 //style
 export const style = () => {
-  return gulp.src('source/sass/style.scss', {sourcemaps: true})
+  return gulp.src('source/sass/style.scss', { sourcemaps: true })
     .pipe(plumber())
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss([
       autoprefixer(),
-      css()
+      csso()
     ]))
     .pipe(rename('style.min.css'))
-    .pipe(gulp.dest('build/css', {sourcemaps: '.'}))
+    .pipe(gulp.dest('build/css', { sourcemaps: '.' }))
     .pipe(browser.stream());
 }
 
@@ -113,11 +113,10 @@ const reload = (done) => {
 
 //watcher
 const watcher = () => {
-  gulp.watch('source/sass/**/*.scss', gulp.series(styles));
-  // gulp.watch('source/js/*.js', gulp.series(scripts));
   gulp.watch('source/*.html', gulp.series(html, reload));
-  gulp.watch('source/*.html', gulp.series('change', browser.reload));
-
+  gulp.watch('source/sass/**/*.scss', gulp.series(style));
+  gulp.watch('source/*.html').on('change', browser.reload);
+  // gulp.watch('source/js/*.js', gulp.series(script));
 }
 
 export const build = gulp.series(
