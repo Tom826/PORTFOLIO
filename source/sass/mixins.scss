@@ -1,0 +1,11 @@
+@mixin desktop {
+  @media screen and (min-width: $desktop-width){
+    @content;
+  }
+}
+
+@mixin resolution {
+  @media (min-resolution: 2dppx){
+    @content;
+  }
+}
